@@ -3,6 +3,18 @@
 #'
 #' Connect to the SDS011 air particulate sensor connected via USB
 #'
+#' @param port Part name. This is usually operating software dependent. For
+#'   Raspberry Pi with an SDS011 device plugged via USB, this will be *ttyUSB0*.
+#' @param mode A string concatenating the baud rate, parity, databits and
+#'   stopbits of the communication mode separated by a comma. Default to
+#'   *"115200,n,8,1"*.
+#' @param buffering Connection buffering. Default to *"none"*. Other options
+#'   is *"line"* to send buffer after new line character or *"full"* where
+#'   write operations are buffed until a connection is flushed.
+#' @param newline Logical. Should a transmission end with a newline or not.
+#'   Default is TRUE or 1.
+#' @param translation End of line character to use. Could be *"lf"*, *"cr"*,
+#'   *"crlf"*, *"binary"*, or *"auto"*. Default to *"auto"*.
 #' @param open Logical. Should connection be opened once established? Default to
 #'   TRUE
 #'
@@ -18,15 +30,17 @@
 #
 ################################################################################
 
-sds011_connect <- function(open = TRUE) {
+sds011_connect <- function(port = "ttyUSB0", mode = "115200,n,8,1",
+                           buffering = "none", newline = TRUE,
+                           translation = "auto", open = TRUE) {
   ## Create connection
   conn <- serial::serialConnection(
     name = "rpi-sds011",
-    port = "ttyUSB0",
-    mode = "115200,n,8,1",
-    buffering = "none",
-    newline = 1,
-    translation = "cr"
+    port = port,
+    mode = mode,
+    buffering = buffering,
+    newline = newline,
+    translation = translation
   )
 
   ## Open connection?
