@@ -16,7 +16,7 @@
 #' @docType package
 #' @keywords internal
 #' @name rpi
-#' @importFrom serial serialConnection read.serialConnection
+#' @importFrom serial serialConnection read.serialConnection isOpen
 #'
 #'
 #'
