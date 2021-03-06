@@ -4,7 +4,11 @@
 \alias{sds011_read}
 \title{Read from a serial interface connection to the SDS011 device}
 \usage{
-sds011_read()
+sds011_read(con = sds011_connect())
+}
+\arguments{
+\item{con}{A serial connection to an SDS011 device connected via USB. Default
+is a call to \code{sds011_connect()}.}
 }
 \value{
 Readings from a serial interface connection to the SDS011 device

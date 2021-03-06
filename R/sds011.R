@@ -42,6 +42,9 @@ sds011_connect <- function(open = TRUE) {
 #'
 #' Read from a serial interface connection to the SDS011 device
 #'
+#' @param con A serial connection to an SDS011 device connected via USB. Default
+#'   is a call to `sds011_connect()`.
+#'
 #' @return Readings from a serial interface connection to the SDS011 device
 #'
 #' @examples
@@ -55,8 +58,6 @@ sds011_connect <- function(open = TRUE) {
 #
 ################################################################################
 
-sds011_read <- function() {
-  conn <- sds011_connect()
-
-  serial::read.serialConnection(con = conn, n = 0)
+sds011_read <- function(con = sds011_connect()) {
+  serial::read.serialConnection(con = con, n = 0)
 }
