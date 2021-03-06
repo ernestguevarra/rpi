@@ -31,7 +31,9 @@ sds011_connect <- function(open = TRUE) {
 
   ## Open connection?
   if (open) {
-    open(conn)
+    if (!isOpen(conn, rw = "read")) {
+      open(conn, open = "r")
+    }
   }
 }
 
