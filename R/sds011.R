@@ -22,7 +22,7 @@ sds011_connect <- function(open = TRUE) {
   ## Create connection
   conn <- serial::serialConnection(
     name = "rpi-sds011",
-    port = "ttyUSB0",
+    port = "/dev/ttyUSB0",
     mode = "115200,n,8,1",
     buffering = "none",
     newline = 1,
