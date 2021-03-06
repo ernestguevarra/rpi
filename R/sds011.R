@@ -32,7 +32,7 @@ sds011_connect <- function(open = TRUE) {
   ## Open connection?
   if (open) {
     if (!serial::isOpen(conn, rw = "read")) {
-      open(conn, open = "r")
+      open(conn)
     }
   }
 }
