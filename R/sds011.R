@@ -100,7 +100,13 @@ sds011_read <- function(con = sds011_connect(), n = 0) {
 
 sds011_read_int <- function(con = sds011_connect(), n = 0, interval = 5) {
   while (TRUE) {
-    print(list(Sys.time(), sds011_read(con = con, n = 0)))
+    print(
+      list(
+        date_time = Sys.time(),
+        reading = sds011_read(con = con, n = 0)
+      )
+    )
+
     Sys.sleep(time = interval)
   }
 }
