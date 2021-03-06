@@ -4,7 +4,11 @@
 \alias{sds011_connect}
 \title{Connect to the SDS011 air particulate sensor connected via USB}
 \usage{
-sds011_connect()
+sds011_connect(open = TRUE)
+}
+\arguments{
+\item{open}{Logical. Should connection be opened once established? Default to
+TRUE}
 }
 \value{
 A serial interface connection to the SDS011 device via USB
@@ -13,7 +17,7 @@ A serial interface connection to the SDS011 device via USB
 Connect to the SDS011 air particulate sensor connected via USB
 }
 \examples{
-\donttest{
+\dontrun{
   sds011_connect()
 }
 

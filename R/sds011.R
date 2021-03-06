@@ -3,10 +3,13 @@
 #'
 #' Connect to the SDS011 air particulate sensor connected via USB
 #'
+#' @param open Logical. Should connection be opened once established? Default to
+#'   TRUE
+#'
 #' @return A serial interface connection to the SDS011 device via USB
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #'   sds011_connect()
 #' }
 #'
@@ -15,12 +18,21 @@
 #
 ################################################################################
 
-sds011_connect <- function() {
-  serial::serialConnection(
+sds011_connect <- function(open = TRUE) {
+  ## Create connection
+  conn <- serial::serialConnection(
     name = "rpi-sds011",
     port = "ttyUSB0",
-    mode = "9600,n,8,1"
+    mode = "115200,n,8,1",
+    buffering = "none",
+    newline = 1,
+    translation = "auto"
   )
+
+  ## Open connection?
+  if (open) {
+    open(conn)
+  }
 }
 
 ################################################################################
