@@ -2,6 +2,7 @@
 
 export(sds011_connect)
 export(sds011_read)
+export(sds011_read_int)
 importFrom(serial,isOpen)
 importFrom(serial,read.serialConnection)
 importFrom(serial,serialConnection)

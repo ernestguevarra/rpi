@@ -63,6 +63,7 @@ sds011_connect <- function(port = "ttyUSB0", mode = "115200,n,8,1",
 #'   is a call to `sds011_connect()`.
 #' @param n Number of bytes to read. Only in binary mode. n=0 (default) reads
 #'   the whole buffer at once.
+#' @param interval Reading interval in seconds. Default to 5 seconds.
 #'
 #' @return Readings from a serial interface connection to the SDS011 device
 #'
@@ -71,6 +72,7 @@ sds011_connect <- function(port = "ttyUSB0", mode = "115200,n,8,1",
 #'   sds011_read()
 #' }
 #'
+#' @rdname sds011_read
 #' @export
 #'
 #'
@@ -78,8 +80,27 @@ sds011_connect <- function(port = "ttyUSB0", mode = "115200,n,8,1",
 ################################################################################
 
 sds011_read <- function(con = sds011_connect(), n = 0) {
-  data.frame(
-    date = Sys.time(),
-    reading = serial::read.serialConnection(con = con, n = n)
-  )
+  serial::read.serialConnection(con = con, n = n)
+}
+
+
+################################################################################
+#
+#'
+#' @examples
+#' \dontrun{
+#'   sds011_read_int()
+#' }
+#'
+#' @rdname sds011_read
+#' @export
+#'
+#
+################################################################################
+
+sds011_read_int <- function(con = sds011_connect(), n = 0, interval = 5) {
+  while (TRUE) {
+    print(c(Sys.time(), sds011_read(con = con, n = 0)))
+    Sys.sleep(time = interval)
+  }
 }

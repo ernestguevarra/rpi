@@ -2,9 +2,12 @@
 % Please edit documentation in R/sds011.R
 \name{sds011_read}
 \alias{sds011_read}
+\alias{sds011_read_int}
 \title{Read from a serial interface connection to the SDS011 device}
 \usage{
 sds011_read(con = sds011_connect(), n = 0)
+
+sds011_read_int(con = sds011_connect(), n = 0, interval = 5)
 }
 \arguments{
 \item{con}{A serial connection to an SDS011 device connected via USB. Default
@@ -12,6 +15,8 @@ is a call to \code{sds011_connect()}.}
 
 \item{n}{Number of bytes to read. Only in binary mode. n=0 (default) reads
 the whole buffer at once.}
+
+\item{interval}{Reading interval in seconds. Default to 5 seconds.}
 }
 \value{
 Readings from a serial interface connection to the SDS011 device
@@ -22,6 +27,10 @@ Read from a serial interface connection to the SDS011 device
 \examples{
 \dontrun{
   sds011_read()
+}
+
+\dontrun{
+  sds011_read_int()
 }
 
 }
