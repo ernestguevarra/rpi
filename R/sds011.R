@@ -47,6 +47,8 @@ sds011_connect <- function(open = TRUE) {
 #'
 #' @param con A serial connection to an SDS011 device connected via USB. Default
 #'   is a call to `sds011_connect()`.
+#' @param n Number of bytes to read. Only in binary mode. n=0 (default) reads
+#'   the whole buffer at once.
 #'
 #' @return Readings from a serial interface connection to the SDS011 device
 #'
@@ -61,6 +63,6 @@ sds011_connect <- function(open = TRUE) {
 #
 ################################################################################
 
-sds011_read <- function(con = sds011_connect()) {
-  serial::read.serialConnection(con = con, n = 0)
+sds011_read <- function(con = sds011_connect(), n = 0) {
+  serial::read.serialConnection(con = con, n = n)
 }

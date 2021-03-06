@@ -4,11 +4,14 @@
 \alias{sds011_read}
 \title{Read from a serial interface connection to the SDS011 device}
 \usage{
-sds011_read(con = sds011_connect())
+sds011_read(con = sds011_connect(), n = 0)
 }
 \arguments{
 \item{con}{A serial connection to an SDS011 device connected via USB. Default
 is a call to \code{sds011_connect()}.}
+
+\item{n}{Number of bytes to read. Only in binary mode. n=0 (default) reads
+the whole buffer at once.}
 }
 \value{
 Readings from a serial interface connection to the SDS011 device
