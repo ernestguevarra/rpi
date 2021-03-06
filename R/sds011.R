@@ -78,5 +78,8 @@ sds011_connect <- function(port = "ttyUSB0", mode = "115200,n,8,1",
 ################################################################################
 
 sds011_read <- function(con = sds011_connect(), n = 0) {
-  serial::read.serialConnection(con = con, n = n)
+  data.frame(
+    date = Sys.time(),
+    reading = serial::read.serialConnection(con = con, n = n)
+  )
 }
