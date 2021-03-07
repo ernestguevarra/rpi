@@ -103,7 +103,7 @@ sds011_read_int <- function(con = sds011_connect(), n = 0, interval = 5) {
     print(
       list(
         date_time = Sys.time(),
-        reading = sds011_read(con = con, n = 0)
+        reading = print(sds011_read(con = con, n = 0))
       )
     )
 
